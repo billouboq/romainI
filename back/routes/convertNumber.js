@@ -1,6 +1,6 @@
 "use strict";
 
-const convertNumberToRomainOne = require("../convertNumberToRomainOne");
+const convertNumberToRomainOne = require("../services/convertNumberToRomainOne");
 
 module.exports = (req, res) => {
   const romainNumber = convertNumberToRomainOne(req.body.number);
