@@ -3,8 +3,11 @@
 const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
+const config = require("config");
 const convertNumberToRomainOne = require("./convertNumberToRomainOne");
 const server = express();
+
+const PORT = config.get("server.port");
 
 const indexHtml = path.resolve(__dirname, "../front/index.html");
 const staticFolder = path.resolve(__dirname, "../front");
@@ -22,8 +25,8 @@ server.post("/convertNumber", (req, res) => {
 });
 
 const run = () => {
-  server.listen(3000, () => {
-    console.log("Example server listening on port 3000!");
+  server.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
   });
 };
 
