@@ -1,19 +1,15 @@
 "use strict";
 
-const path = require("path");
 const express = require("express");
-const bodyParser = require("body-parser");
 const config = require("config");
-const server = express();
-const initRoutes = require("./routes");
 
+const initRoutes = require("./routes");
+const initMiddlewares = require("./middlewares");
+
+const server = express();
 const PORT = config.get("server.port");
 
-const staticFolder = path.resolve(__dirname, "../front");
-
-server.use(bodyParser.json());
-server.use("/static", express.static(staticFolder));
-
+initMiddlewares(server);
 initRoutes(server);
 
 const run = () => {
